@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    filter: invert(0.5);
+  }
+
+  /* Custom checkbox styles */
+  input[type="checkbox"] {
+    @apply h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded;
+  }
+
+  /* Custom radio styles */
+  input[type="radio"] {
+    @apply h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300;
+  }
+}
+
+/* Smooth transitions */
+.form-control {
+  @apply transition-all duration-200 ease-in-out;
+}
+
+/* Focus styles */
+.focus-ring {
+  @apply focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 focus:outline-none;
+}
