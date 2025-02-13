@@ -14,6 +14,7 @@ import { BeneficiariesForm } from "./components/BeneficiariesForm";
 import { ExecutorsTrusteesForm } from "./components/ExecutorsTrusteesForm";
 import { HealthCareAgentsForm } from "./components/HealthCareAgentsForm";
 import { FormDataSchema, type FormData } from "./types";
+import axios from "axios";
 
 function App() {
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -122,9 +123,19 @@ function App() {
     }
   }, [hasSpouse, methods]);
 
+  // configuration
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      'Access-Control-Allow-Origin': '*',
+    },
+  };
   const onSubmit = async (data: FormData) => {
     console.log("data:", data);
-
+    // https://hooks.zapier.com/hooks/catch/21346468/2w4jkhf/
+    await axios.post(" https://hooks.zapier.com/hooks/catch/21346468/2w4jkhf/", data, config);
+    // const proxyUrl = "https://cors-anywhere.herokuapp.com/";
+    // await axios.post(proxyUrl + "https://hooks.zapier.com/hooks/catch/21346468/2w4jkhf/", data, config);
     // Simulate form submission
     await new Promise((resolve) => setTimeout(resolve, 1000));
     console.log("Form submitted:", data);
