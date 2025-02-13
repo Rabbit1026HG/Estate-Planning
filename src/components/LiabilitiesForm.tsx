@@ -1,5 +1,5 @@
 import React from 'react';
-import { useFieldArray, useFormContext } from 'react-hook-form';
+import {  useFormContext } from 'react-hook-form';
 import { FloatingLabelInput } from './FloatingLabelInput';
 import type { FormData } from '../types';
 
@@ -10,11 +10,7 @@ const LIABILITY_TYPES = [
 ];
 
 export const LiabilitiesForm: React.FC = () => {
-  const { control, register, formState: { errors } } = useFormContext<FormData>();
-  const { fields } = useFieldArray({
-    control,
-    name: 'liabilities',
-  });
+  const { register, formState: { errors } } = useFormContext<FormData>();
 
   return (
     <div className="space-y-6">

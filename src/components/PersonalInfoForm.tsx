@@ -11,13 +11,21 @@ export const PersonalInfoForm: React.FC<PersonalInfoFormProps> = ({ type }) => {
   const {
     register,
     formState: { errors },
+    watch,
   } = useFormContext<FormData>();
 
   const prefix = type === 'personal' ? 'personalInfo' : 'spouseInfo';
   const title = type === 'personal' ? 'Personal Information' : 'Spouse Information';
+  const militaryService = watch(`${prefix}.militaryService.served`);
+  // const hasSpouse = watch('hasSpouse');
+  // const isRequired = type === 'personal' || hasSpouse;
 
   return (
-    <div className="space-y-6">
+    <div className={`space-y-6 ${type === 'spouse' ? 'relative' : ''}`}>
+      {type === 'spouse' && (
+        <div className="absolute -top-4 left-0 right-0 h-1 bg-indigo-100 rounded" />
+      )}
+      
       <h2 className="text-2xl font-semibold text-gray-900">{title}</h2>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -25,6 +33,7 @@ export const PersonalInfoForm: React.FC<PersonalInfoFormProps> = ({ type }) => {
           label="Full Legal Name"
           {...register(`${prefix}.fullName`)}
           error={errors[prefix]?.fullName?.message}
+          // required={isRequired}
         />
         
         <div className="space-y-2">
@@ -48,6 +57,7 @@ export const PersonalInfoForm: React.FC<PersonalInfoFormProps> = ({ type }) => {
           label="Home Address"
           {...register(`${prefix}.address`)}
           error={errors[prefix]?.address?.message}
+          // required={isRequired}
         />
 
         <FloatingLabelInput
@@ -55,6 +65,7 @@ export const PersonalInfoForm: React.FC<PersonalInfoFormProps> = ({ type }) => {
           type="tel"
           {...register(`${prefix}.cellPhone`)}
           error={errors[prefix]?.cellPhone?.message}
+          // required={isRequired}
         />
 
         <FloatingLabelInput
@@ -62,6 +73,7 @@ export const PersonalInfoForm: React.FC<PersonalInfoFormProps> = ({ type }) => {
           type="email"
           {...register(`${prefix}.email`)}
           error={errors[prefix]?.email?.message}
+          // required={isRequired}
         />
 
         <FloatingLabelInput
@@ -73,6 +85,24 @@ export const PersonalInfoForm: React.FC<PersonalInfoFormProps> = ({ type }) => {
           label="Occupation"
           {...register(`${prefix}.occupation`)}
         />
+
+        <div className="md:col-span-2 space-y-4">
+          <label className="flex items-center space-x-2">
+            <input
+              type="checkbox"
+              {...register(`${prefix}.militaryService.served`)}
+              className="form-checkbox"
+            />
+            <span>Have you served in the military?</span>
+          </label>
+
+          {militaryService && (
+            <FloatingLabelInput
+              label="Military Service Details (branch, dates, highest rank)"
+              {...register(`${prefix}.militaryService.details`)}
+            />
+          )}
+        </div>
       </div>
     </div>
   );

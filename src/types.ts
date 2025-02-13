@@ -21,9 +21,6 @@ export const ChildInfoSchema = z.object({
   thisMarriage: z.boolean(),
   previousRelationship: z.boolean(),
   adopted: z.boolean(),
-  deceased: z.boolean(),
-  specialNeeds: z.boolean(),
-  governmentBenefits: z.boolean(),
 });
 
 export const AssetSchema = z.object({
@@ -60,6 +57,7 @@ export const HealthCareAgentSchema = z.object({
 });
 
 export const FormDataSchema = z.object({
+  hasSpouse: z.boolean(),
   personalInfo: PersonalInfoSchema,
   spouseInfo: PersonalInfoSchema.optional(),
   children: z.array(ChildInfoSchema).optional(),

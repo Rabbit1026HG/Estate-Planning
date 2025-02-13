@@ -1,5 +1,5 @@
 import React from 'react';
-import { useFieldArray, useFormContext } from 'react-hook-form';
+import {  useFormContext } from 'react-hook-form';
 import { FloatingLabelInput } from './FloatingLabelInput';
 import type { FormData } from '../types';
 
@@ -12,11 +12,8 @@ const ASSET_TYPES = [
 ];
 
 export const AssetsForm: React.FC = () => {
-  const { control, register, formState: { errors } } = useFormContext<FormData>();
-  const { fields } = useFieldArray({
-    control,
-    name: 'assets',
-  });
+  const {  register, formState: { errors } } = useFormContext<FormData>();
+
 
   return (
     <div className="space-y-6">
