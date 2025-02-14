@@ -27,9 +27,6 @@ export const AssetsForm: React.FC = () => {
                 Description
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Yes/No
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 How is Asset Titled
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -45,13 +42,6 @@ export const AssetsForm: React.FC = () => {
               <tr key={assetType}>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                   {assetType}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <input
-                    type="checkbox"
-                    {...register(`assets.${index}.hasAsset`)}
-                    className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
-                  />
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   <FloatingLabelInput

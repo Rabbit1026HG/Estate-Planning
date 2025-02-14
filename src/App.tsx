@@ -38,63 +38,49 @@ function App() {
       assets: [
         {
           description: "Cash/CDs, and Bank Accounts",
-          hasAsset: false,
         },
         {
           description: "Annuities/Pensions",
-          hasAsset: false,
         },
         {
           description: "Residence",
-          hasAsset: false,
         },
         {
           description: "Other Real Estate",
-          hasAsset: false,
         },
         {
           description: "IRAs, 401(k)s, Other Retirement",
-          hasAsset: false,
         },
       ],
       liabilities: [
         {
           description: "Real Estate Mortgages",
-          hasLiability: false,
         },
         {
           description: "Vehicle",
-          hasLiability: false,
         },
         {
           description: "Other",
-          hasLiability: false,
         },
       ],
       otherAssets: [
         {
           description: "Life Insurance",
-          hasAsset: false,
         },
         {
           description: "Long Term Care Insurance",
-          hasAsset: false,
         },
         {
           description: "Prepaid Funeral/Burial or Cremation",
-          hasAsset: false,
         },
         {
           description: "Business Ownership Interest",
-          hasAsset: false,
         },
         {
           description: "Foreign Assets",
-          hasAsset: false,
         },
         {
           description: "Safe Deposit Boxes",
-          hasAsset: false,
         },
       ],
       otherInterests: {
@@ -252,11 +238,11 @@ function App() {
 
               <section id="trustees">
                 <ExecutorsTrusteesForm type="trustee" />
-              </section>
+              </section> 
 
               <section id="health-care-agents">
                 <HealthCareAgentsForm type="personal" />
-              </section>
+              </section> 
 
               {hasSpouse && (
                 <section

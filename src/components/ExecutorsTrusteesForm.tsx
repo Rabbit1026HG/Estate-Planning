@@ -1,5 +1,5 @@
 import React from 'react';
-import { useFieldArray, useFormContext } from 'react-hook-form';
+import { useFormContext } from 'react-hook-form';
 import { FloatingLabelInput } from './FloatingLabelInput';
 import type { FormData } from '../types';
 
@@ -8,26 +8,15 @@ interface ExecutorsTrusteesFormProps {
 }
 
 export const ExecutorsTrusteesForm: React.FC<ExecutorsTrusteesFormProps> = ({ type }) => {
-  const { control, register, formState: { errors } } = useFormContext<FormData>();
-  const { fields, append } = useFieldArray({
-    control,
-    name: type === 'executor' ? 'executors' : 'trustees',
-  });
+  const { register, formState: { errors } } = useFormContext<FormData>();
+
 
   const title = type === 'executor' ? 'Executors' : 'Successor Trustees';
   const description = type === 'executor'
     ? 'Select an Executor to wind up your affairs at your death and make sure your wishes are carried out.'
     : 'Select Successor Trustees to manage your trust after your death.';
 
-  // Ensure there are always two entries (primary and alternate)
-  React.useEffect(() => {
-    if (fields.length < 1) {
-      const entriesToAdd = 1 - fields.length;
-      for (let i = 0; i < entriesToAdd; i++) {
-        append({ name: '', relationship: '', phone: '' });
-      }
-    }
-  }, [fields.length, append]);
+
 
   return (
     <div className="space-y-6">
@@ -37,35 +26,60 @@ export const ExecutorsTrusteesForm: React.FC<ExecutorsTrusteesFormProps> = ({ ty
       </div>
 
       <div className="space-y-4">
-        {fields.map((field, index) => (
-          <div key={field.id} className="p-6 bg-gray-50 rounded-lg">
+          <div className="p-6 bg-gray-50 rounded-lg">
             <h3 className="text-lg font-medium text-gray-900 mb-4">
-              {index === 0 ? 'Primary' : 'Alternate'} {type === 'executor' ? 'Executor' : 'Trustee'}
+              Primary {type === 'executor' ? 'Executor' : 'Trustee'}
             </h3>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <FloatingLabelInput
                 label="Name"
-                {...register(`${type === 'executor' ? 'executors' : 'trustees'}.${index}.name`)}
-                error={errors[type === 'executor' ? 'executors' : 'trustees']?.[index]?.name?.message}
+                {...register(`${type === 'executor' ? 'executors' : 'trustees'}.0.name`)}
+                error={errors[type === 'executor' ? 'executors' : 'trustees']?.[0]?.name?.message}
               />
 
               <FloatingLabelInput
                 label="Relationship"
-                {...register(`${type === 'executor' ? 'executors' : 'trustees'}.${index}.relationship`)}
-                error={errors[type === 'executor' ? 'executors' : 'trustees']?.[index]?.relationship?.message}
+                {...register(`${type === 'executor' ? 'executors' : 'trustees'}.0.relationship`)}
+                error={errors[type === 'executor' ? 'executors' : 'trustees']?.[0]?.relationship?.message}
               />
 
               <FloatingLabelInput
                 label="Phone"
                 type="tel"
-                {...register(`${type === 'executor' ? 'executors' : 'trustees'}.${index}.phone`)}
-                error={errors[type === 'executor' ? 'executors' : 'trustees']?.[index]?.phone?.message}
+                {...register(`${type === 'executor' ? 'executors' : 'trustees'}.0.phone`)}
+                error={errors[type === 'executor' ? 'executors' : 'trustees']?.[0]?.phone?.message}
               />
             </div>
           </div>
-        ))}
+          <div className="p-6 bg-gray-50 rounded-lg">
+            <h3 className="text-lg font-medium text-gray-900 mb-4">
+              Secondary {type === 'executor' ? 'Executor' : 'Trustee'}
+            </h3>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <FloatingLabelInput
+                label="Name"
+                {...register(`${type === 'executor' ? 'executors' : 'trustees'}.1.name`)}
+                error={errors[type === 'executor' ? 'executors' : 'trustees']?.[1]?.name?.message}
+              />
+
+              <FloatingLabelInput
+                label="Relationship"
+                {...register(`${type === 'executor' ? 'executors' : 'trustees'}.1.relationship`)}
+                error={errors[type === 'executor' ? 'executors' : 'trustees']?.[1]?.relationship?.message}
+              />
+
+              <FloatingLabelInput
+                label="Phone"
+                type="tel"
+                {...register(`${type === 'executor' ? 'executors' : 'trustees'}.1.phone`)}
+                error={errors[type === 'executor' ? 'executors' : 'trustees']?.[1]?.phone?.message}
+              />
+            </div>
+          </div>
       </div>
     </div>
   );
 };
+

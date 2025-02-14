@@ -25,7 +25,6 @@ export const ChildInfoSchema = z.object({
 
 export const AssetSchema = z.object({
   description: z.string(),
-  hasAsset: z.boolean(),
   titleType: z.string().optional(),
   jointOwner: z.string().optional(),
   beneficiary: z.string().optional(),
@@ -33,7 +32,6 @@ export const AssetSchema = z.object({
 
 export const LiabilitySchema = z.object({
   description: z.string(),
-  hasLiability: z.boolean(),
   debtType: z.string().optional(),
   jointOwner: z.string().optional(),
 });
