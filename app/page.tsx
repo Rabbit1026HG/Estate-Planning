@@ -1,3 +1,4 @@
+'use client'
 import React, { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -14,9 +15,12 @@ import { BeneficiariesForm } from "./components/BeneficiariesForm";
 import { ExecutorsTrusteesForm } from "./components/ExecutorsTrusteesForm";
 import { HealthCareAgentsForm } from "./components/HealthCareAgentsForm";
 import { FormDataSchema, type FormData } from "./types";
-import axios from "axios";
+import { useFetch } from "./_helper/useFetch";
+// import { useFetch } from "./_helper/useFetch";
+// import axios from "axios";
 
 function App() {
+  const fetch = useFetch();
   const [isSubmitted, setIsSubmitted] = useState(false);
   const methods = useForm<FormData>({
     resolver: zodResolver(FormDataSchema),
@@ -109,24 +113,30 @@ function App() {
     }
   }, [hasSpouse, methods]);
 
-  // configuration
-  const config = {
-    headers: {
-      "Content-Type": "application/json",
-      'Access-Control-Allow-Origin': '*',
-    },
-  };
   const onSubmit = async (data: FormData) => {
     console.log("data:", data);
-    // https://hooks.zapier.com/hooks/catch/21346468/2w4jkhf/
-    await axios.post(" https://hooks.zapier.com/hooks/catch/21346468/2w4jkhf/", data, config);
-    // const proxyUrl = "https://cors-anywhere.herokuapp.com/";
-    // await axios.post(proxyUrl + "https://hooks.zapier.com/hooks/catch/21346468/2w4jkhf/", data, config);
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    console.log("Form submitted:", data);
-    setIsSubmitted(true);
+    await fetch.post('/api/proxy', data);
+    
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      setIsSubmitted(true);
+    
+
+
+    // const response = await fetch('/api/proxy', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: JSON.stringify(data),
+    // });
+  
+    // const response1 = await response.json();
+    // console.log(response1);
+    
   };
+
+
+
 
   if (isSubmitted) {
     return (
@@ -138,7 +148,7 @@ function App() {
           </h2>
           <p className="mt-2 text-gray-600">
             Your estate planning questionnaire has been submitted successfully.
-            We'll review your information and contact you soon.
+            {`We'll review your information and contact you soon.`}
           </p>
           <button
             onClick={() => setIsSubmitted(false)}
@@ -268,5 +278,4 @@ function App() {
     </FormProvider>
   );
 }
-
 export default App;

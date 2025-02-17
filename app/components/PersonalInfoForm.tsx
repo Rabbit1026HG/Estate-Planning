@@ -61,6 +61,14 @@ export const PersonalInfoForm: React.FC<PersonalInfoFormProps> = ({ type }) => {
         />
 
         <FloatingLabelInput
+          label="Home Phone"
+          type="tel"
+          {...register(`${prefix}.homePhone`)}
+          error={errors[prefix]?.homePhone?.message}
+          // required={isRequired}
+        />
+
+        <FloatingLabelInput
           label="Cell Phone"
           type="tel"
           {...register(`${prefix}.cellPhone`)}

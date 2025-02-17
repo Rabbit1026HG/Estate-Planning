@@ -4,7 +4,7 @@ export const PersonalInfoSchema = z.object({
   fullName: z.string().min(1, 'Full name is required'),
   priorMarriage: z.enum(['none', 'divorced', 'widowed']),
   address: z.string().min(1, 'Address is required'),
-  homePhone: z.string().optional(),
+  homePhone: z.string().min(8, 'Valid phone number required'),
   cellPhone: z.string().min(10, 'Valid phone number required'),
   email: z.string().email('Invalid email address'),
   employer: z.string().optional(),
