@@ -24,7 +24,7 @@ export const LiabilitiesForm: React.FC = () => {
                 Description
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                How is Debt Held?
+              Is Debt Held Individually or Jointly?
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 If Joint, With Whom?
