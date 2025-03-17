@@ -104,9 +104,9 @@ function getCheckboxLabel(key: keyof CheckedItems): string {
     case 'hasDeceasedChildren':
       return 'Are any of the previously listed children deceased?';
     case 'hasSpecialNeedsChildren':
-      return 'Does any child have special needs (e.g., long-term medical problems, financial irresponsibility, incompetence, etc.)?';
+      return 'Check Box if  any child has special needs (e.g., long-term medical problems, financial irresponsibility, incompetence, etc.).';
     case 'hasChildrenWithBenefits':
-      return 'Is any child or grandchild above (or other anticipated beneficiary) qualified to receive governmental benefits as a result of any mental or physical impairment?';
+      return 'Check box if you or your spouse have any child or grandchild above (or other anticipated beneficiary) qualified to receive government benefits as a result of any mental or physical impairment.';
     case 'hasObligationsToEx':
       return 'Do you or your spouse have any obligations to any ex-spouse or children from a previous marriage under a separation agreement or divorce decree?';
     default:

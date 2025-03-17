@@ -101,7 +101,7 @@ export const PersonalInfoForm: React.FC<PersonalInfoFormProps> = ({ type }) => {
               {...register(`${prefix}.militaryService.served`)}
               className="form-checkbox"
             />
-            <span>Have you served in the military?</span>
+            <span>Check Box if you have served in the military.</span>
           </label>
 
           {militaryService && (
