@@ -1,10 +1,10 @@
-import React from 'react';
-import { useFormContext } from 'react-hook-form';
-import { FloatingLabelInput } from './FloatingLabelInput';
-import type { FormData } from '../types';
+import React from "react";
+import { useFormContext } from "react-hook-form";
+import { FloatingLabelInput } from "./FloatingLabelInput";
+import type { FormData } from "../types";
 
 interface PersonalInfoFormProps {
-  type: 'personal' | 'spouse';
+  type: "personal" | "spouse";
 }
 
 export const PersonalInfoForm: React.FC<PersonalInfoFormProps> = ({ type }) => {
@@ -14,32 +14,35 @@ export const PersonalInfoForm: React.FC<PersonalInfoFormProps> = ({ type }) => {
     watch,
   } = useFormContext<FormData>();
 
-  const prefix = type === 'personal' ? 'personalInfo' : 'spouseInfo';
-  const title = type === 'personal' ? 'Personal Information' : 'Spouse Information';
+  const prefix = type === "personal" ? "personalInfo" : "spouseInfo";
+  const title =
+    type === "personal" ? "Personal Information" : "Spouse Information";
   const militaryService = watch(`${prefix}.militaryService.served`);
   // const hasSpouse = watch('hasSpouse');
   // const isRequired = type === 'personal' || hasSpouse;
 
   return (
-    <div className={`space-y-6 ${type === 'spouse' ? 'relative' : ''}`}>
-      {type === 'spouse' && (
+    <div className={`space-y-6 ${type === "spouse" ? "relative" : ""}`}>
+      {type === "spouse" && (
         <div className="absolute -top-4 left-0 right-0 h-1 bg-indigo-100 rounded" />
       )}
-      
+
       <h2 className="text-2xl font-semibold text-gray-900">{title}</h2>
-      
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <FloatingLabelInput
           label="Full Legal Name"
-          {...register(`${prefix}.fullName`)}
+          {...register(`${prefix}.fullName`, {
+            setValueAs: (value) => (value ? value.toUpperCase() : value),
+          })}
           error={errors[prefix]?.fullName?.message}
           // required={isRequired}
         />
-        
+
         <div className="space-y-2">
           <label className="text-sm text-gray-600">Prior Marriages</label>
           <div className="space-x-4">
-            {['none', 'divorced', 'widowed'].map((value) => (
+            {["none", "divorced", "widowed"].map((value) => (
               <label key={value} className="inline-flex items-center">
                 <input
                   type="radio"
