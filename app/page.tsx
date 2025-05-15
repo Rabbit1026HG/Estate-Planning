@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React, { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -29,7 +29,7 @@ function App() {
       personalInfo: {
         priorMarriage: "none",
       },
-      spouseInfo:{
+      spouseInfo: {
         priorMarriage: "none",
       },
       children: [],
@@ -115,28 +115,12 @@ function App() {
 
   const onSubmit = async (data: FormData) => {
     console.log("data:", data);
-    await fetch.post('/api/proxy', data);
-    
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      setIsSubmitted(true);
-    
+    await fetch.post("/api/proxy", data);
 
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    setIsSubmitted(true);
 
-    // const response = await fetch('/api/proxy', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify(data),
-    // });
-  
-    // const response1 = await response.json();
-    // console.log(response1);
-    
   };
-
-
-
 
   if (isSubmitted) {
     return (
@@ -248,11 +232,11 @@ function App() {
 
               <section id="trustees">
                 <ExecutorsTrusteesForm type="trustee" />
-              </section> 
+              </section>
 
               <section id="health-care-agents">
                 <HealthCareAgentsForm type="personal" />
-              </section> 
+              </section>
 
               {hasSpouse && (
                 <section
