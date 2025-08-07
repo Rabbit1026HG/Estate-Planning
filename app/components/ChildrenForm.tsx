@@ -19,7 +19,7 @@ export const ChildrenForm: React.FC = () => {
           type="button"
           onClick={() => append({
             name: '',
-            dateOfBirth: '',
+            // dateOfBirth: '',
             thisMarriage: false,
             previousRelationship: false,
             adopted: false,
@@ -41,21 +41,15 @@ export const ChildrenForm: React.FC = () => {
             <Trash2 className="h-5 w-5" />
           </button>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <FloatingLabelInput
               label="Full Name"
               {...register(`children.${index}.name`)}
               error={errors.children?.[index]?.name?.message}
             />
 
-            <FloatingLabelInput
-              label="Date of Birth"
-              type="date"
-              {...register(`children.${index}.dateOfBirth`)}
-              error={errors.children?.[index]?.dateOfBirth?.message}
-            />
 
-            <div className="md:col-span-2 flex space-x-6">
+            <div className="flex space-x-2 md:space-x-4">
               <label className="inline-flex items-center">
                 <input
                   type="checkbox"

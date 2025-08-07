@@ -17,7 +17,7 @@ export const PersonalInfoSchema = z.object({
 
 export const ChildInfoSchema = z.object({
   name: z.string().min(1, 'Name is required'),
-  dateOfBirth: z.string().min(1, 'Date of birth is required'),
+  // dateOfBirth: z.string().min(1, 'Date of birth is required'),
   thisMarriage: z.boolean(),
   previousRelationship: z.boolean(),
   adopted: z.boolean(),
@@ -45,13 +45,12 @@ export const BeneficiarySchema = z.object({
 export const ExecutorTrusteeSchema = z.object({
   name: z.string().min(1, 'Name is required'),
   relationship: z.string().min(1, 'Relationship is required'),
-  phone: z.string().min(10, 'Valid phone number required'),
+  // phone: z.string().min(10, 'Valid phone number required'),
 });
 
 export const HealthCareAgentSchema = z.object({
   name: z.string().min(1, 'Name is required'),
   relationship: z.string().min(1, 'Relationship is required'),
-  phone: z.string().min(10, 'Valid phone number required'),
 });
 
 export const FormDataSchema = z.object({
