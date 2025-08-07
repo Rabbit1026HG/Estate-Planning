@@ -6,10 +6,10 @@ import type { FormData } from '../types';
 const OTHER_ASSET_TYPES = [
   'Life Insurance',
   'Long Term Care Insurance',
-  'Prepaid Funeral/Burial or Cremation',
+  // 'Prepaid Funeral/Burial or Cremation',
   'Business Ownership Interest',
   'Foreign Assets',
-  'Safe Deposit Boxes',
+  // 'Safe Deposit Boxes',
 ];
 
 export const OtherAssetsForm: React.FC = () => {

@@ -31,7 +31,7 @@ export const ExecutorsTrusteesForm: React.FC<ExecutorsTrusteesFormProps> = ({ ty
               Primary {type === 'executor' ? 'Executor' : 'Trustee'}
             </h3>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <FloatingLabelInput
                 label="Name"
                 {...register(`${type === 'executor' ? 'executors' : 'trustees'}.0.name`)}
@@ -44,12 +44,12 @@ export const ExecutorsTrusteesForm: React.FC<ExecutorsTrusteesFormProps> = ({ ty
                 error={errors[type === 'executor' ? 'executors' : 'trustees']?.[0]?.relationship?.message}
               />
 
-              <FloatingLabelInput
+              {/* <FloatingLabelInput
                 label="Phone"
                 type="tel"
                 {...register(`${type === 'executor' ? 'executors' : 'trustees'}.0.phone`)}
                 error={errors[type === 'executor' ? 'executors' : 'trustees']?.[0]?.phone?.message}
-              />
+              /> */}
             </div>
           </div>
           <div className="p-6 bg-gray-50 rounded-lg">
@@ -57,7 +57,7 @@ export const ExecutorsTrusteesForm: React.FC<ExecutorsTrusteesFormProps> = ({ ty
               Secondary {type === 'executor' ? 'Executor' : 'Trustee'}
             </h3>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <FloatingLabelInput
                 label="Name"
                 {...register(`${type === 'executor' ? 'executors' : 'trustees'}.1.name`)}
@@ -70,12 +70,12 @@ export const ExecutorsTrusteesForm: React.FC<ExecutorsTrusteesFormProps> = ({ ty
                 error={errors[type === 'executor' ? 'executors' : 'trustees']?.[1]?.relationship?.message}
               />
 
-              <FloatingLabelInput
+              {/* <FloatingLabelInput
                 label="Phone"
                 type="tel"
                 {...register(`${type === 'executor' ? 'executors' : 'trustees'}.1.phone`)}
                 error={errors[type === 'executor' ? 'executors' : 'trustees']?.[1]?.phone?.message}
-              />
+              /> */}
             </div>
           </div>
       </div>
