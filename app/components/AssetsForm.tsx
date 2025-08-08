@@ -45,7 +45,7 @@ export const AssetsForm: React.FC = () => {
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   <FloatingLabelInput
-                    label="Title Type"
+                    label="Title"
                     {...register(`assets.${index}.titleType`)}
                     error={errors.assets?.[index]?.titleType?.message}
                   />

@@ -46,7 +46,7 @@ export const OtherAssetsForm: React.FC = () => {
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   <FloatingLabelInput
-                    label="Title Type"
+                    label="Title"
                     {...register(`otherAssets.${index}.titleType`)}
                     error={errors.otherAssets?.[index]?.titleType?.message}
                   />
